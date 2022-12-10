@@ -4,19 +4,65 @@
   <meta charset="UTF-8">
   <title>Информация о товаре</title>
   <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+  <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-<hr>
-<p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-<p th:text="'Описание: ' + ${product.getDescription()}"></p>
-<p th:text="'Цена: ' + ${product.getPrice()}"></p>
-<p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
-<p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-<p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+<header>
+  <nav>
+    <div class="container_user">
 
-<div th:each="img: ${product.getImageList()}">
-  <img th:src="'/img' + ${img.getFileName()}" width="300px">
+      <form method="get" th:action="@{/orders}">
+        <input class="add_to_cart" type="submit" value="Мои покупки ">
+      </form>
+
+      <form method="get" th:action="@{/cart}">
+        <input class="add_to_cart" type="submit" value="Корзина">
+      </form>
+
+      <form method="post" th:action="@{/logout}">
+        <input class="add_to_cart" type="submit" value="Выйти из личного кабинета">
+      </form>
+    </div>
+  </nav>
+</header>
+
+
+<div class="ip_section">
+  <div class="ip_section_img">
+    <div th:each="img: ${product.getImageList()}" class="slideshow-container">
+      <div class="mySlides fade">
+        <img th:src="'/img/' + ${img.getFileName()}">
+      </div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10096;</a>
+    <a class="next" onclick="plusSlides(1)">&#10097;</a>
+    <br>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+  </div>
+
+  <div class="ip_section_info">
+    <h3>Наименование</h3>
+    <p th:text="${product.getTitle()}">title из бд</p>
+
+    <h3>Категория</h3>
+    <p th:text="${product.getCategory().getName()}">Категория из бд</p>
+
+    <h3>Описание</h3>
+    <p th:text="${product.getDescription()}">Описание из бд</p>
+
+    <h3>Цена</h3>
+    <span th:text="${product.getPrice()}" class="ip_s"> Цена из бд 2500 &#8381;</span>
+
+    <button class="add_to_cart"><a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a></button>
+  </div>
 </div>
-<hr>
+
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>
