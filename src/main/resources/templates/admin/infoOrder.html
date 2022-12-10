@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о заказе</title>
+    <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+</head>
+<body>
+<form th:method="POST" th:action="@{/admin/orders/{id}(id=${info_order.getId()})}" th:object="${info_order}">
+<div th:each="order : ${info_order}">
+    <p th:text="${info_order.getNumber()}"></p>
+    <p th:text="${info_order.getDateTime()}"></p>
+    <p th:text="${info_order.getStatus()}"></p>
+
+    <label for="status">Обновить статус заказа </label>
+    <select id="status" name="status" >
+        <option th:each="state:${T(com.example.springsecurityapplication.enumm.Status).values()}" th:value="${state}" th:text="${state}"></option>
+    </select>
+        <button type="submit">Изменить</button>
+
+    <p th:text="${info_order.getProduct().getTitle()}"></p>
+    <p th:text="${info_order.getPrice()}"></p>
+    <p th:text="${info_order.getCount()}"></p>
+    <p th:text="${info_order.getPerson().getId()}"></p>
+
+</div>
+</form>
+
+
+</body>
+</html>

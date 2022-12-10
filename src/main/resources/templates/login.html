@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Авторизация</title>
+        <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+        <link th:href="@{/css/auth.css}" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+
+    <video autoplay muted loop class="backgroundvideo">
+        <source th:src="@{/media/1.mp4}">
+    </video>
+
+    <form method="post" th:action="@{/process_login}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div class="form">
+            <h3>Добро пожаловать</h3>
+
+            <div class="input-form">
+                <input type="text" placeholder="Login" name="username" id="username">
+            </div>
+
+            <div class="input-form">
+                <input type="password" placeholder="Password" name="password" id="password">
+            </div>
+
+            <div class="input-form">
+                <input type="submit" value="Войти">
+            </div>
+
+            <div th:if="${param.error}" class="validate ">
+                Неправильный логин или пароль
+            </div>
+
+            <h4>Нет аккаунта?</h4>
+            <a href="/auth/registration">Регистрация</a>
+        </div>
+    </form>
+
+    <div id="snowflakeContainer">
+        <span class="snowflake"></span>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container_cart">
+
+                <form method="get" th:action="@{/index}">
+                    <input class="cart" type="submit" value="К товарам">
+                </form>
+
+                <form method="get" th:action="@{/cart}">
+                    <input class="cart" type="submit" value="Корзина">
+                </form>
+
+                <form method="post" th:action="@{/logout}">
+                    <input class="cart" type="submit" value="Выйти из личного кабинета">
+                </form>
+            </div>
+        </nav>
+    </header>
+    <h3>История заказов</h3>
+    <div class="container_orders">
+
+        <div th:each="order : ${orders}" class="order_item">
+            <div class="order_item1">
+                <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}">
+            </div>
+            <div class="order_item2">
+                <h4 th:text="'Заказ № ' + ${order.getNumber()}"></h4>
+                <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
+                <p th:text="'Количество: ' + ${order.getCount()}"></p>
+                <p th:text="'Цена: ' + ${order.getPrice()}"></p>
+                <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+                <p th:text="'Статус: ' + ${order.getStatus()}"></p>
+                <hr>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

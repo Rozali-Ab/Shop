@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>История заказов</title>
+    <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+</head>
+<body>
+<h3>История заказов</h3>
+<h4>Поиск по номеру заказа (4 последние символа)</h4>
+
+<form th:method="POST" th:action="@{/admin/orders/search}">
+    <label for="value">Введите 4 последних символа заказа</label>
+    <input type="search" name="value" id="value">
+    <input type="submit" value="Поиск">
+</form>
+<hr>
+<div th:each="order : ${search_order}">Найдено:
+    <a th:href="@{/admin/orders/{id}(id=${order.getId()})}" th:text="'id ' + ${order.getId()}"></a>
+    <span th:text="'id' + ${order.getId()}"></span>
+    <span th:text="'Дата заказа' + ${order.getDateTime()}"></span>
+    <span th:text="'Статус ' + ${order.getStatus()}"></span>
+    <span th:text="'Товар ' + ${order.getProduct().getTitle()}"></span>
+    <span th:text="'Номер заказа ' + ${order.getNumber()}"></span>
+</div>
+
+<hr>
+<div >
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Дата заказа</th>
+            <th>Статус</th>
+            <th>Товар</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Покупатель</th>
+            <th>Номер заказа</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td><a th:href="@{/admin/orders/{id}(id=${order.getId()})}" th:text="${order.getId()}"></a></td>
+            <td th:text="${order.getDateTime()}"></td>
+            <td th:text="${order.getStatus()}"></td>
+            <td th:text="${order.getProduct().getTitle()}"></td>
+            <td th:text="${order.getPrice()}"></td>
+            <td th:text="${order.getCount()}"></td>
+            <td th:text="${order.getPerson().getId()}"></td>
+            <td th:text="${order.getNumber()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

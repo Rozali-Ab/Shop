@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+</head>
+<body>
+<h3>Пользователи магазина</h3>
+
+<div >
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>login</th>
+            <th>password</th>
+            <th>role</th>
+            <th>change role</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+    <form th:each="person : ${users}" th:method="POST" th:action="@{/admin/users/{id}(id=${person.getId()})}">
+        <tr>
+            <td><a th:href="@{/admin/users/{id}(id=${person.getId()})}" th:text="${person.getId()}"></a></td>
+            <td th:text="${person.getLogin()}"></td>
+            <td th:text="${person.getPassword()}"></td>
+            <td th:text="${person.getRole()}"></td>
+            <td>
+                <select name="role" id="role">
+                    <option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN" ></option>
+                    <option th:value="ROLE_SELLER" th:text="ROLE_SELLER"></option>
+                    <option th:value="ROLE_USER" th:text="ROLE_USER"></option>
+                </select>
+            </td>
+            <td><button type="submit">Изменить</button></td>
+        </tr>
+    </form>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

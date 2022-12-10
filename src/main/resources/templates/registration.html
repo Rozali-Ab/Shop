@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link th:href="@{/css/auth.css}" type="text/css" rel="stylesheet">
+  <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+</head>
+<body>
+
+<form method="post" th:action="@{/auth/registration}" th:object="${person}">
+  <section id = "forma">
+    <h1>Введите данные для регистрации: </h1>
+
+    <div>
+      <input type="text" placeholder="Фамилия" id="username">
+    </div>
+    <div>
+      <input type="text" placeholder="Имя" id="username">
+    </div>
+    <div>
+      <input type="date" value="2022-30-09" id="date">
+    </div>
+    <div>
+      <input type="tel" placeholder="+7 (XXX) XXX-XX-XX">
+    </div>
+    <div>
+      <input type="email" name="email1" placeholder="Электронная почта" id="email">
+    </div>
+    <div>
+      <input type="checkbox"><span>Я согласна(сен) на обработку персональных данных</span>
+    </div>
+    <div>
+      <input type="checkbox"><span>Получать уведомления об акциях</span>
+    </div>
+
+    <div class="input-form">
+      <input type="text"  th:field="*{login}" placeholder="Придумайте логин" name="username" id="login">
+      <div class="validate" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+    </div>
+    <div class="input-form">
+      <input type="password" th:field="*{password}" placeholder="и пароль" name="password" id="password">
+      <div class="validate" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+    </div>
+    <div class="input-form">
+      <input type="submit" value="Регистрация">
+    </div>
+    <br>
+    <div class="forma">
+      <a href="/auth/login">Войти в личный кабинет</a>
+    </div>
+  </section>
+</form>
+<div class="reg_cover">
+  <img th:src="'/img/'+ 1.jpg" alt="image" width="600px">
+
+</div>
+
+<script th:src="@{/js/snow.js}">
+</script>
+</body>
+</html>

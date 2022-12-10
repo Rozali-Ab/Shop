@@ -1,0 +1,220 @@
+body{
+    font-family: 'Bookman Old Style';
+}
+.backgroundvideo{
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    right: 0;
+    bottom: 0;
+    z-index: -9999;
+}
+
+video{
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    right: 0;
+    bottom: 0;
+    z-index: -9999;
+}
+
+.form{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(250, 118, 190, 0.1);
+    height: 430px;
+}
+
+.form h3{
+    margin: 20px 100px;
+    padding: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.form h4{
+    margin: 20px 100px;
+    padding: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+.input-form{
+    margin: 15px 40px;
+    text-align: center;
+}
+
+.input-form input{
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+    font-size: 20px;
+    background: none;
+    outline: none;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+}
+
+.input-form input[type="text"]:focus,
+.input-form input[type="password"]:focus{
+    border: 1px solid #ea90e1;
+}
+
+.input-form input[type="submit"]{
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    background: #c52d8d;
+    transition: .3s;
+}
+
+.input-form input[type="submit"]:hover{
+    background: #c52d8d;
+}
+
+.form a{
+    font-size: 18px;
+    display: block;
+    padding: 0 0 30px;
+    text-align: center;
+    color: #f479bdb2;
+    text-decoration: none;
+    transition: .3s;
+    font-size: 25px;
+}
+
+.form a:hover{
+    color: #ea90e1;
+}
+
+#snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
+.snowflake {
+    position: fixed;
+    background-color: #CCC;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.validate{
+    color: #f479bdb2;
+    font-size: 20px;
+    padding: 5px;
+    margin-left: 30px;
+    text-align: start;
+}
+
+
+#forma {
+    display: block;
+    position: absolute;
+    top: 5%;
+    left: 40%;
+    margin-left: 10px;
+    padding: 0 0 0;
+    text-align: left;
+    width: 550px;
+    height: 750px;
+    color: #f479bdb2;
+    font-size: 18px;
+    padding: 0 0 30px;
+    font-family: 'Bookman Old Style';
+    text-align: center;
+    text-decoration: none;
+    transition: .3s;
+    background: #f690c81a;
+
+}
+
+#forma h1 {
+    color: rgb(234, 45, 174);
+    font-size: 25px;
+    text-shadow: 2px 2px 2px white;
+}
+#forma input[type="text"],
+#forma input[type="password"],
+#forma input[type="date"],
+#forma input[type="email"],
+#forma input[type="tel"] {
+    border: 2px solid rgb(244, 211, 235);
+    color: rgb(234, 45, 174);
+    font-size: 14px;
+    margin: 0 0 10px;
+    padding: 15px 10px 15px 40px;
+    width: 400px;
+    background-color: transparent;
+}
+
+#forma input[type="text"]:focus,
+#forma input[type="password"]:focus,
+#forma input[type="date"]:focus,
+#forma input[type="email"]:focus,
+#forma input[type="email"]:focus,
+#forma input[type="tel"]:focus,
+#forma input[type="checkbox"]:focus {
+    border: 3px solid;
+    border-color: rgb(247, 117, 206);
+    outline: none;
+}
+
+#forma input[type="text"]::-webkit-input-placeholder,
+#forma input[type="password"]::-webkit-input-placeholder,
+#forma input[type="date"]::-webkit-input-value,
+#forma input[type="email"]::-webkit-input-placeholder,
+#forma input[type="tel"]::-webkit-input-placeholder,
+#forma input[type="checkbox"]::-webkit-input-placeholder {
+    font-family: 'Bookman Old Style';
+    color: rgb(212, 144, 210);
+}
+
+#forma input[type="submit"] {
+    background: rgb(243, 218, 245);
+    border: 1px solid rgb(255, 0, 132);
+    font: bold 16px;
+    width: 400px;
+    height: 50px;
+    margin-top: 15px;
+    padding: 15px 10px 15px 40px;
+}
+
+#forma input[type="submit"]:hover {
+    background: rgb(212, 144, 210);
+}
+
+.forma a{
+    font-size: 18px;
+    display: block;
+    padding: 0 0 30px;
+    text-align: center;
+    color: #f479bdb2;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.forma a:hover{
+    color: #ea90e1;
+}
+
+.reg_cover{
+    width: 300px;
+}
