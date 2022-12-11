@@ -7,6 +7,17 @@
     <link th:href="@{/css/admin.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
+<header>
+    <nav>
+        <h2><a href="/admin">Кабинет администратора</a></h2>
+        <a href="/admin/product/add">Добавить товар</a>
+        <a href="/admin/users">Список пользователей</a>
+        <a href="/admin/orders">Список заказов</a>
+        <form th:method="POST" th:action="@{/logout}">
+            <input type="submit" value="logout">
+        </form>
+    </nav>
+</header>
 
     <h3>Список пользователей</h3>
 
