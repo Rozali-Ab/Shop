@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <title>Информация о заказе</title>
     <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+    <link th:href="@{/css/admin.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-<form th:method="POST" th:action="@{/admin/orders/{id}(id=${info_order.getId()})}" th:object="${info_order}">
-<div th:each="order : ${info_order}">
-    <p th:text="${info_order.getNumber()}"></p>
-    <p th:text="${info_order.getDateTime()}"></p>
-    <p th:text="${info_order.getStatus()}"></p>
+<header>
+    <nav>
+        <h2>Кабинет администратора</h2>
+        <a href="/admin/product/add">Добавить товар</a>
+        <a href="/admin/users">Список пользователей</a>
+        <a href="/admin/orders">Список заказов</a>
+        <form th:method="POST" th:action="@{/logout}">
+            <input type="submit" value="logout">
+        </form>
+    </nav>
+</header>
+    <form th:method="POST" th:action="@{/admin/orders/{id}(id=${info_order.getId()})}" th:object="${info_order}">
+        <div th:each="order : ${info_order}">
+            <p th:text="${info_order.getNumber()}"></p>
+            <p th:text="${info_order.getDateTime()}"></p>
+            <p th:text="${info_order.getStatus()}"></p>
 
-    <label for="status">Обновить статус заказа </label>
-    <select id="status" name="status" >
-        <option th:each="state:${T(com.example.springsecurityapplication.enumm.Status).values()}" th:value="${state}" th:text="${state}"></option>
-    </select>
-        <button type="submit">Изменить</button>
+            <label for="status">Обновить статус заказа </label>
+            <select id="status" name="status" >
+                <option th:each="state:${T(com.example.springsecurityapplication.enumm.Status).values()}" th:value="${state}" th:text="${state}"></option>
+            </select>
+                <button type="submit">Изменить</button>
 
-    <p th:text="${info_order.getProduct().getTitle()}"></p>
-    <p th:text="${info_order.getPrice()}"></p>
-    <p th:text="${info_order.getCount()}"></p>
-    <p th:text="${info_order.getPerson().getId()}"></p>
+            <p th:text="${info_order.getProduct().getTitle()}"></p>
+            <p th:text="${info_order.getPrice()}"></p>
+            <p th:text="${info_order.getCount()}"></p>
+            <p th:text="${info_order.getPerson().getId()}"></p>
 
-</div>
-</form>
+        </div>
+    </form>
 
 
 </body>

@@ -4,45 +4,56 @@
     <meta charset="UTF-8">
     <title>Редактирование товара</title>
   <link th:href="@{/icon/logo.png}" type="jpg/png" rel="icon" />
+  <link th:href="@{/css/admin.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
+<header>
+  <nav>
+    <h2><a href="/admin">Кабинет администратора</a></h2>
+    <a href="/admin/product/add">Добавить товар</a>
+    <a href="/admin/users">Список пользователей</a>
+    <a href="/admin/orders">Список заказов</a>
+    <form th:method="POST" th:action="@{/logout}">
+      <input type="submit" value="logout">
+    </form>
+  </nav>
+</header>
     <h3>Редактирование товара</h3>
     <form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${editProduct.getId()})}" th:object="${editProduct}">
-
       <label for="title">Наименование товара: </label>
       <input type="text" th:field="*{title}" placeholder="Наименование" id="title">
       <div style="color: deeppink" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
-      <br>
-      <br>
+
       <label for="description">Добавьте описание товара: </label>
       <textarea th:field="*{description}" placeholder="Описание" id="description"></textarea>
       <div style="color: deeppink" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
-      <br>
-      <br>
+
       <label for="price">Цена товара: </label>
       <input type="number" th:field="*{price}" min="1" step="0.00" placeholder="Цена" id="price">
       <div style="color: deeppink" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-      <br>
-      <br>
+
       <label for="warehouse">Склад: </label>
       <input type="text" th:field="*{warehouse}" placeholder="Склад" id="warehouse">
       <div style="color: deeppink" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
-      <br>
-      <br>
+
       <label for="category">Категория товара: </label>
       <select name="category" th:field="*{category}" id="category">
         <div th:each="element : ${category}">
           <option th:text="${element.getName()}" th:value="${element.getId()}"></option>
         </div>
       </select>
-      <br>
-      <br>
+
       <label for="seller">Продавец: </label>
       <textarea th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
       <div style="color: deeppink" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
-      <br>
-      <br>
+
       <input type="submit" value="Редактировать">
+
+      <div class="edit_img">
+        <div th:each="img: ${editProduct.getImageList()}">
+          <img th:src="'/img/' + ${img.getFileName()}">
+        </div>
+      </div>
 
     </form>
 </body>

@@ -1,0 +1,111 @@
+body h3{
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 3px 5px #f291c674;
+}
+nav a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+}
+
+img{
+    max-width: 150px;
+}
+
+.admin_prod_section{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 10px;
+}
+
+.admin_prod_section_item{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 6px solid transparent;
+    border-bottom: ridge rgba(253, 149, 219, 0.72);
+    margin: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding-left: 20%;
+}
+
+form label{
+    font-size: 20px;
+    color: #c52d8d;
+    font-weight: bold;
+    margin: 5px;
+}
+form input{
+    font-size: 20px;
+    box-sizing: border-box;
+    border: 1px solid rgba(253, 149, 219, 0.72);
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+}
+form textarea{
+    font-size: 18px;
+    box-sizing: border-box;
+    border: 1px solid rgba(253, 149, 219, 0.72);
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    padding: 10px;
+}
+
+form select{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(245, 202, 231, 0.62);
+    font-size: 20px;
+}
+.edit_img{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+
+
+
+.table {
+    width: 60%;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Bookman Old Style';
+}
+.table thead th {
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    padding: 10px 15px;
+    background: rgba(217,36,113, .3);
+    font-size: 14px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.table tbody td {
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+}
+

@@ -33,7 +33,6 @@ public class AdminController {
     @Value("${upload.path}")
     private String uploadPath;
 
-
     private final ProductValidator productValidator;
 
     private final ProductService productService;
@@ -204,6 +203,7 @@ public class AdminController {
     public String getOrderByNumber(@RequestParam("value") String value, Model model){
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("search_order", orderService.getOrderByNumberEndingWithIgnoreCase(value));
+        model.addAttribute("value", value);
         System.out.println(value);
         System.out.println(model.toString());
         return "/admin/orders";
@@ -225,6 +225,17 @@ public class AdminController {
         return "redirect:/admin/orders/{id}";
     }
 
+    //изменение статуса заказа на странице с листом всех заказов
+    @PostMapping("/orders/create/{id}")
+    public String createOrder(@PathVariable("id") int id, @RequestParam("status") Status status){
+        System.out.println(id);
+        System.out.println(status);
+        Order order = orderService.getOrderById(id);
+        order.setStatus(status);
+        orderService.updateOrderStatus(order);
+        return "redirect:/admin/orders";
+    }
+
     //вывести список юзеров для админа
     @GetMapping("/users")
     public String getUsers(Model model){
@@ -232,6 +243,7 @@ public class AdminController {
         return "/admin/users";
     }
 
+    //изменить роль пользователю на странице с листом всех пользователей
     @PostMapping ("/users/{id}")
     public String getPersonInfo(@PathVariable("id") int id, @RequestParam("role") String role){
         System.out.println(id);
@@ -241,8 +253,5 @@ public class AdminController {
         personService.updateRole(person_role);
         return "redirect:/admin/users";
     }
-
-
-
 
 }

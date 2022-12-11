@@ -75,7 +75,7 @@
             <div class="product_item" th:each="product : ${search_product}">
                 <div class="product_item1">
                     <a th:href="@{/user/info/{id}(id=${product.getId()})}">
-                        <img th:src="'/img/' + ${product.imageList[0].getFileName()}">
+                        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" alt="">
                     </a>
                 </div>
                 <div class="product_item2">
@@ -97,7 +97,7 @@
             <div class="product_item"  th:each="product : ${products}">
                 <div class="product_item1">
                     <a th:href="@{/user/info/{id}(id=${product.getId()})}">
-                        <img th:src="'/img/' + ${product.imageList[0].getFileName()}">
+                        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" alt="">
                     </a>
                 </div>
                 <div class="product_item2">
