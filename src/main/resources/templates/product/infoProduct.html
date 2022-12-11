@@ -11,7 +11,8 @@
         <nav>
             <div class="container">
                 <a th:href="@{/product}">Каталог</a>
-                <a th:href="@{/index}">Личный кабинет</a>
+
+                <a th:href="@{/index}">Войти</a>
             </div>
         </nav>
     </header>
@@ -46,9 +47,8 @@
             <p th:text="${product.getDescription()}">Описание из бд</p>
 
             <h3>Цена</h3>
-            <span th:text="${product.getPrice()}" class="ip_s"> Цена из бд 2500 &#8381;</span>
+            <span th:text="${product.getPrice()} + ' &#8381; '" class="ip_s"> Цена из бд 2500 </span>
 
-            <button class="add_to_cart"><a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a></button>
         </div>
     </div>
 
