@@ -7,64 +7,75 @@
     <link th:href="@{/css/admin.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>История заказов</h3>
-<h4>Поиск по номеру заказа (4 последние символа)</h4>
-
-<form th:method="POST" th:action="@{/admin/orders/search}">
-    <label for="value">Введите 4 последних символа заказа</label>
-    <input type="search" name="value" id="value" th:value="*{value}">
-    <input type="submit" value="Поиск">
-</form>
-<hr>
-<div th:each="order : ${search_order}">Найдено:
-    <a th:href="@{/admin/orders/{id}(id=${order.getId()})}" th:text="'id ' + ${order.getId()}"></a>
-    <span th:text="'id' + ${order.getId()}"></span>
-    <span th:text="'Дата заказа' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></span>
-    <span th:text="'Статус ' + ${order.getStatus()}"></span>
-    <span th:text="'Товар ' + ${order.getProduct().getTitle()}"></span>
-    <span th:text="'Номер заказа ' + ${order.getNumber()}"></span>
-</div>
-
-<hr>
-<div >
-    <table class="table">
-        <thead>
-        <tr>
-            <th>id</th>
-            <th>Дата заказа</th>
-            <th>Товар</th>
-            <th>Цена</th>
-            <th>Количество</th>
-            <th>Покупатель</th>
-            <th>Номер заказа</th>
-            <th>Статус</th>
-            <th colspan="2">Изменить статус</th>
-        </tr>
-        </thead>
-        <tbody>
-        <form th:each="order : ${orders}" th:method="POST" th:action="@{/admin/orders/create/{id}(id=${order.getId()})}">
-            <tr>
-                <td><a th:href="@{/admin/orders/{id}(id=${order.getId()})}" th:text="${order.getId()}"></a></td>
-                <td th:text="${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></td>
-                <td th:text="${order.getProduct().getTitle()}"></td>
-                <td th:text="${order.getPrice()}"></td>
-                <td th:text="${order.getCount()}"></td>
-                <td th:text="${order.getPerson().getId()}"></td>
-                <td th:text="${order.getNumber()}"></td>
-                <td th:text="${order.getStatus()}"></td>
-                <td>
-                    <select id="status" name="status">
-                        <option th:each="state:${T(com.example.springsecurityapplication.enumm.Status).values()}" th:value="${state}" th:text="${state}"></option>
-                    </select>
-                </td>
-                <td>
-                    <input type="submit" value="Изменить">
-                </td>
-            </tr>
+<header>
+    <nav>
+        <h2><a href="/admin">Кабинет администратора</a></h2>
+        <a href="/admin/product/add">Добавить товар</a>
+        <a href="/admin/users">Список пользователей</a>
+        <a href="/admin/orders">Список заказов</a>
+        <form th:method="POST" th:action="@{/logout}">
+            <input type="submit" value="logout">
         </form>
-        </tbody>
-    </table>
-</div>
+    </nav>
+</header>
+    <h3>История заказов</h3>
+    <h4>Поиск по номеру заказа (4 последние символа)</h4>
+
+    <form th:method="POST" th:action="@{/admin/orders/search}">
+        <label for="value">Введите 4 последних символа заказа</label>
+        <input type="search" name="value" id="value" th:value="*{value}">
+        <input type="submit" value="Поиск">
+    </form>
+    <hr>
+    <div th:each="order : ${search_order}">Найдено:
+        <a th:href="@{/admin/orders/{id}(id=${order.getId()})}" th:text="'id ' + ${order.getId()}"></a>
+        <span th:text="'id' + ${order.getId()}"></span>
+        <span th:text="'Дата заказа' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></span>
+        <span th:text="'Статус ' + ${order.getStatus()}"></span>
+        <span th:text="'Товар ' + ${order.getProduct().getTitle()}"></span>
+        <span th:text="'Номер заказа ' + ${order.getNumber()}"></span>
+    </div>
+
+    <hr>
+    <div >
+        <table class="table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Дата заказа</th>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Покупатель</th>
+                <th>Номер заказа</th>
+                <th>Статус</th>
+                <th colspan="2">Изменить статус</th>
+            </tr>
+            </thead>
+            <tbody>
+            <form th:each="order : ${orders}" th:method="POST" th:action="@{/admin/orders/create/{id}(id=${order.getId()})}">
+                <tr>
+                    <td><a th:href="@{/admin/orders/{id}(id=${order.getId()})}" th:text="${order.getId()}"></a></td>
+                    <td th:text="${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></td>
+                    <td th:text="${order.getProduct().getTitle()}"></td>
+                    <td th:text="${order.getPrice()}"></td>
+                    <td th:text="${order.getCount()}"></td>
+                    <td th:text="${order.getPerson().getId()}"></td>
+                    <td th:text="${order.getNumber()}"></td>
+                    <td th:text="${order.getStatus()}"></td>
+                    <td>
+                        <select id="status" name="status">
+                            <option th:each="state:${T(com.example.springsecurityapplication.enumm.Status).values()}" th:value="${state}" th:text="${state}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="submit" value="Изменить">
+                    </td>
+                </tr>
+            </form>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
