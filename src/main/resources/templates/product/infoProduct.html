@@ -19,8 +19,8 @@
 
     <div class="ip_section">
         <div class="ip_section_img">
-            <div th:each="img: ${product.getImageList()}" class="slideshow-container">
-                <div class="mySlides fade">
+            <div class="slideshow-container">
+                <div class="mySlides fade"  th:each="img: ${product.getImageList()}" >
                     <img th:src="'/img/' + ${img.getFileName()}">
                 </div>
             </div>

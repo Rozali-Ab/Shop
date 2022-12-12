@@ -109,7 +109,7 @@ public class AdminController {
                 product.addImageToProduct(image);}
 
             //проверка на пустоту второго файла, если пустой, то не сохраняем и так для остальных файлов
-                    if (file_two != null) {
+                    if (!file_two.isEmpty()) {
                         File uploadDir = new File(uploadPath);
                         if (!uploadDir.exists()) {
                             uploadDir.mkdir();
@@ -123,7 +123,7 @@ public class AdminController {
                         product.addImageToProduct(image);}
 
                     //третий
-                    if (file_three != null) {
+                    if (!file_three.isEmpty()) {
                         File uploadDir = new File(uploadPath);
                         if (!uploadDir.exists()) {
                             uploadDir.mkdir();
@@ -137,7 +137,7 @@ public class AdminController {
                         product.addImageToProduct(image);}
 
                     //четвертый
-                    if (file_four != null) {
+                    if (!file_four.isEmpty()) {
                         File uploadDir = new File(uploadPath);
                         if (!uploadDir.exists()) {
                             uploadDir.mkdir();
@@ -151,7 +151,7 @@ public class AdminController {
                         product.addImageToProduct(image);}
 
                     //пятый
-                    if (file_five != null) {
+                    if (!file_five.isEmpty()) {
                         File uploadDir = new File(uploadPath);
                         if (!uploadDir.exists()) {
                             uploadDir.mkdir();

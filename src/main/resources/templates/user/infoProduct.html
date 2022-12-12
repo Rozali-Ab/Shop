@@ -26,42 +26,41 @@
   </nav>
 </header>
 
+    <div class="ip_section">
+      <div class="ip_section_img">
+        <div class="slideshow-container">
+          <div class="mySlides fade"  th:each="img: ${product.getImageList()}" >
+            <img th:src="'/img/' + ${img.getFileName()}">
+          </div>
+        </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10096;</a>
+          <a class="next" onclick="plusSlides(1)">&#10097;</a>
+        <br>
+          <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+          </div>
+      </div>
 
-<div class="ip_section">
-  <div class="ip_section_img">
-    <div th:each="img: ${product.getImageList()}" class="slideshow-container">
-      <div class="mySlides fade">
-        <img th:src="'/img/' + ${img.getFileName()}">
+      <div class="ip_section_info">
+        <h3>Наименование</h3>
+        <p th:text="${product.getTitle()}">title из бд</p>
+
+        <h3>Категория</h3>
+        <p th:text="${product.getCategory().getName()}">Категория из бд</p>
+
+        <h3>Описание</h3>
+        <p th:text="${product.getDescription()}">Описание из бд</p>
+
+        <h3>Цена</h3>
+        <span th:text="${product.getPrice()}" class="ip_s"> Цена из бд 2500 &#8381;</span>
+
+        <button class="add_to_cart"><a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a></button>
       </div>
     </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10096;</a>
-    <a class="next" onclick="plusSlides(1)">&#10097;</a>
-    <br>
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-      <span class="dot" onclick="currentSlide(5)"></span>
-    </div>
-  </div>
-
-  <div class="ip_section_info">
-    <h3>Наименование</h3>
-    <p th:text="${product.getTitle()}">title из бд</p>
-
-    <h3>Категория</h3>
-    <p th:text="${product.getCategory().getName()}">Категория из бд</p>
-
-    <h3>Описание</h3>
-    <p th:text="${product.getDescription()}">Описание из бд</p>
-
-    <h3>Цена</h3>
-    <span th:text="${product.getPrice()}" class="ip_s"> Цена из бд 2500 &#8381;</span>
-
-    <button class="add_to_cart"><a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a></button>
-  </div>
-</div>
 
 <script th:src="@{/js/index.js}"></script>
 </body>
