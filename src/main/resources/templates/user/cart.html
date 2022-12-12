@@ -29,7 +29,7 @@
         <h3>Корзина товаров</h3>
         <div class="cart_section">
             <div th:each="product : ${cart_product}" id="cartItems" class="cartItems">
-                <a th:href="@{/product/info/{id}(id=${product.getId()})}">
+                <a th:href="@{/user/info/{id}(id=${product.getId()})}">
                     <img th:src="'/img/' + ${product.imageList[0].getFileName()}">
                 </a>
                 <p th:text="' ' + ${product.getTitle()}"></p>
